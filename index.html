@@ -6,7 +6,7 @@
     <title>Tech Week 2026 - St. Timothy University</title>
 
     <style>
-        /* ===== RESET ===== */
+        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -129,7 +129,38 @@
             color: #ffffff;
         }
 
-        /* ===== HERO SECTION ===== */
+        /* ===== USER LOGIN STATUS ===== */
+        .user-status {
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-size: 14px;
+            color: #8892b0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-status .name {
+            color: #00F0FF;
+            font-weight: 600;
+        }
+
+        .user-status .logout-btn {
+            background: none;
+            border: none;
+            color: #FF0080;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .user-status .logout-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== HERO ===== */
         .hero {
             text-align: center;
             padding: 20px 0 40px;
@@ -167,7 +198,7 @@
             line-height: 1.6;
         }
 
-        /* ===== COUNTDOWN TIMER ===== */
+        /* ===== COUNTDOWN ===== */
         .countdown {
             display: flex;
             justify-content: center;
@@ -199,7 +230,7 @@
             letter-spacing: 1px;
         }
 
-        /* ===== FEATURES GRID (Buttons replaced with Tech Week content) ===== */
+        /* ===== FEATURES ===== */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -222,6 +253,10 @@
             border-color: #00F0FF;
             transform: translateY(-5px);
             box-shadow: 0 10px 40px rgba(0, 240, 255, 0.1);
+        }
+
+        .feature-card:active {
+            transform: scale(0.95);
         }
 
         .feature-card .icon {
@@ -282,6 +317,10 @@
             box-shadow: 0 0 60px rgba(255, 0, 128, 0.4);
         }
 
+        .cta-primary:active {
+            transform: scale(0.97);
+        }
+
         .cta-secondary {
             display: inline-block;
             background: transparent;
@@ -302,7 +341,11 @@
             transform: translateY(-3px);
         }
 
-        /* ===== SCHEDULE SECTION ===== */
+        .cta-secondary:active {
+            transform: scale(0.97);
+        }
+
+        /* ===== SECTION TITLES ===== */
         .section-title {
             font-size: 32px;
             font-weight: 700;
@@ -311,6 +354,7 @@
             text-align: center;
         }
 
+        /* ===== SCHEDULE ===== */
         .schedule-tabs {
             display: flex;
             justify-content: center;
@@ -355,11 +399,13 @@
             border-radius: 12px;
             padding: 20px;
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .schedule-item:hover {
             background: rgba(0, 240, 255, 0.06);
             border-color: rgba(0, 240, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         .schedule-item .time {
@@ -377,6 +423,32 @@
         .schedule-item .event-desc {
             font-size: 14px;
             color: #8892b0;
+        }
+
+        .schedule-item .event-tag {
+            display: inline-block;
+            font-size: 11px;
+            padding: 2px 12px;
+            border-radius: 50px;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .tag-exhibits {
+            background: rgba(0, 240, 255, 0.15);
+            color: #00F0FF;
+        }
+        .tag-workshops {
+            background: rgba(255, 200, 0, 0.15);
+            color: #FFD700;
+        }
+        .tag-competitions {
+            background: rgba(255, 0, 128, 0.15);
+            color: #FF0080;
+        }
+        .tag-esports {
+            background: rgba(0, 255, 100, 0.15);
+            color: #00FF64;
         }
 
         /* ===== SPEAKERS ===== */
@@ -403,6 +475,10 @@
             transform: translateY(-3px);
         }
 
+        .speaker-card:active {
+            transform: scale(0.95);
+        }
+
         .speaker-card .avatar {
             font-size: 50px;
             display: block;
@@ -419,7 +495,7 @@
             color: #8892b0;
         }
 
-        /* ===== REGISTRATION LIST ===== */
+        /* ===== REGISTRANT LIST ===== */
         .registrant-list {
             background: rgba(0, 240, 255, 0.03);
             border: 1px solid rgba(0, 240, 255, 0.08);
@@ -465,6 +541,40 @@
             padding: 30px 0;
         }
 
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #12163a;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 12px;
+            padding: 16px 24px;
+            color: #ffffff;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s;
+            z-index: 1000;
+            max-width: 350px;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast .toast-title {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .toast .toast-body {
+            font-size: 14px;
+            color: #8892b0;
+            margin-top: 4px;
+        }
+
         /* ===== MODAL ===== */
         .modal-overlay {
             display: none;
@@ -490,7 +600,7 @@
             border: 1px solid rgba(0, 240, 255, 0.2);
             border-radius: 24px;
             padding: 40px 35px;
-            max-width: 550px;
+            max-width: 520px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
@@ -539,6 +649,7 @@
             margin-bottom: 25px;
         }
 
+        /* ===== FORM ===== */
         .form-group {
             margin-bottom: 18px;
             text-align: left;
@@ -599,8 +710,8 @@
             padding: 16px;
             border: none;
             border-radius: 12px;
-            background: linear-gradient(135deg, #00F0FF, #0088FF);
-            color: #0A0E27;
+            background: linear-gradient(135deg, #FF0080, #cc0066);
+            color: #ffffff;
             font-size: 20px;
             font-weight: 700;
             cursor: pointer;
@@ -610,9 +721,14 @@
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 40px rgba(0, 240, 255, 0.3);
+            box-shadow: 0 0 40px rgba(255, 0, 128, 0.3);
         }
 
+        .submit-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* ===== SUCCESS MESSAGE ===== */
         .success-message {
             display: none;
             text-align: center;
@@ -643,6 +759,30 @@
             display: none;
         }
 
+        /* ===== AUTH TOGGLE ===== */
+        .auth-toggle {
+            text-align: center;
+            margin-top: 18px;
+            color: #8892b0;
+            font-size: 14px;
+        }
+
+        .auth-toggle a {
+            color: #00F0FF;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .auth-toggle a:hover {
+            text-decoration: underline;
+        }
+
+        .password-requirements {
+            font-size: 12px;
+            color: #556;
+            margin-top: 4px;
+        }
+
         /* ===== FOOTER ===== */
         .footer {
             margin-top: 50px;
@@ -656,6 +796,7 @@
         .footer a {
             color: #00F0FF;
             text-decoration: none;
+            cursor: pointer;
         }
 
         .footer a:hover {
@@ -667,83 +808,42 @@
             font-size: 13px;
         }
 
-        /* ===== TOAST NOTIFICATION ===== */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #12163a;
-            border: 1px solid rgba(0, 240, 255, 0.2);
-            border-radius: 12px;
-            padding: 16px 24px;
-            color: #ffffff;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.4s;
-            z-index: 1000;
-            max-width: 350px;
-        }
-
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .toast .toast-title {
-            font-weight: 700;
-            font-size: 16px;
-        }
-
-        .toast .toast-body {
-            font-size: 14px;
-            color: #8892b0;
-            margin-top: 4px;
-        }
-
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .container {
                 padding: 30px 20px;
             }
-
             h1 {
                 font-size: 36px;
             }
-
             .subtext {
                 font-size: 18px;
             }
-
             .header {
                 flex-direction: column;
                 text-align: center;
             }
-
-            .cta-primary {
-                padding: 14px 35px;
-                font-size: 18px;
-                min-width: 170px;
-            }
-
+            .cta-primary,
             .cta-secondary {
                 padding: 14px 30px;
                 font-size: 17px;
                 min-width: 150px;
+                width: 100%;
+                max-width: 280px;
             }
-
+            .cta-group {
+                flex-direction: column;
+                align-items: center;
+            }
             .countdown-item .number {
                 font-size: 28px;
             }
-
             .features {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
-
             .modal {
                 padding: 30px 25px;
             }
-
             .form-row {
                 flex-direction: column;
                 gap: 0;
@@ -755,64 +855,34 @@
                 padding: 20px 15px;
                 border-radius: 16px;
             }
-
             h1 {
                 font-size: 28px;
             }
-
             .subtext {
                 font-size: 16px;
             }
-
-            .cta-primary {
-                padding: 14px 25px;
-                font-size: 16px;
-                min-width: 140px;
-                width: 100%;
-                max-width: 280px;
-            }
-
-            .cta-secondary {
-                padding: 12px 20px;
-                font-size: 15px;
-                min-width: 130px;
-                width: 100%;
-                max-width: 280px;
-            }
-
-            .cta-group {
-                flex-direction: column;
-                align-items: center;
-            }
-
             .logo {
                 font-size: 18px;
                 padding: 8px 16px;
                 border-radius: 12px;
             }
-
             .countdown {
                 gap: 10px;
             }
-
             .countdown-item {
                 padding: 10px 15px;
                 min-width: 60px;
             }
-
             .countdown-item .number {
                 font-size: 22px;
             }
-
             .features {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
             }
-
             .feature-card {
                 padding: 18px 12px;
             }
-
             .feature-card .icon {
                 font-size: 30px;
             }
@@ -828,13 +898,19 @@
 </head>
 <body>
 
+    <!-- ============================================ -->
     <!-- ===== TOAST NOTIFICATION ===== -->
+    <!-- ============================================ -->
+
     <div class="toast" id="toast">
         <div class="toast-title" id="toastTitle">✅ Action Complete</div>
         <div class="toast-body" id="toastBody">Your action was successful!</div>
     </div>
 
+    <!-- ============================================ -->
     <!-- ===== MAIN CONTAINER ===== -->
+    <!-- ============================================ -->
+
     <div class="container">
 
         <div class="circuit-overlay"></div>
@@ -845,9 +921,13 @@
             <div class="header">
                 <div class="logo">TECH WEEK <small>2026</small></div>
                 <div class="header-actions">
-                    <button class="header-btn" onclick="showToast('ℹ️', 'Tech Week 2026 runs from October 12-16, 2026 at St. Timothy University')">📅 Event Info</button>
-                    <button class="header-btn" onclick="showToast('📍', 'Main venue: St. Timothy University - College of Computer Studies Building')">📍 Venue</button>
-                    <button class="header-btn" onclick="viewRegistrants()">📋 Registrants (<span id="regCount">0</span>)</button>
+                    <div class="user-status" id="userStatus">
+                        <span>👤 <span id="displayUsername" class="name">Guest</span></span>
+                        <button class="logout-btn" id="logoutBtn" style="display:none;" onclick="logout()">Logout</button>
+                        <button class="header-btn" onclick="showToast('ℹ️', 'Tech Week 2026 runs from October 12-16, 2026 at St. Timothy University')">📅 Event Info</button>
+                        <button class="header-btn" onclick="showToast('📍', 'Main venue: St. Timothy University - College of Computer Studies Building')">📍 Venue</button>
+                        <button class="header-btn" onclick="viewRegistrants()">📋 Registrants (<span id="regCount">0</span>)</button>
+                    </div>
                 </div>
             </div>
 
@@ -881,7 +961,7 @@
                 </div>
             </div>
 
-            <!-- ===== FEATURES (Interactive Buttons - Tech Week themed) ===== -->
+            <!-- ===== FEATURES (All Interactive) ===== -->
             <div class="features">
                 <div class="feature-card" onclick="showToast('💻', 'Tech Exhibits: Explore 50+ student projects, AI demonstrations, robotics showcases, and VR experiences')">
                     <span class="icon">💻</span>
@@ -946,16 +1026,11 @@
                 <button class="tab-btn" onclick="filterSchedule('esports', this)">🎮 Esports</button>
             </div>
 
-            <div class="schedule-grid" id="scheduleGrid">
-                <!-- Schedule items will be rendered by JavaScript -->
-            </div>
+            <div class="schedule-grid" id="scheduleGrid"></div>
 
             <!-- ===== SPEAKERS ===== -->
             <h2 class="section-title">🎤 Featured Speakers</h2>
-
-            <div class="speakers-grid" id="speakersGrid">
-                <!-- Speakers rendered by JavaScript -->
-            </div>
+            <div class="speakers-grid" id="speakersGrid"></div>
 
             <!-- ===== REGISTRANT LIST ===== -->
             <h2 class="section-title">📋 Registered Attendees</h2>
@@ -967,9 +1042,9 @@
             <div class="footer">
                 <div class="university">College of Computer Studies – St Timothy University</div>
                 <br />
-                <a href="#" onclick="showToast('📱', 'Follow us on social media for updates! @TechWeek2026')">Facebook</a> &bull;
-                <a href="#" onclick="showToast('📱', 'Follow us on social media for updates! @TechWeek2026')">Instagram</a> &bull;
-                <a href="#" onclick="showToast('📱', 'Follow us on social media for updates! @TechWeek2026')">Twitter</a>
+                <a onclick="showToast('📱', 'Follow us on social media for updates! @TechWeek2026')">Facebook</a> &bull;
+                <a onclick="showToast('📱', 'Follow us on social media for updates! @TechWeek2026')">Instagram</a> &bull;
+                <a onclick="showToast('📱', 'Follow us on social media for updates! @TechWeek2026')">Twitter</a>
                 <br /><br />
                 &copy; 2026 Tech Week 2026. All rights reserved.
             </div>
@@ -978,81 +1053,21 @@
     </div>
 
     <!-- ============================================ -->
-    <!-- ===== REGISTRATION MODAL ===== -->
+    <!-- ===== REGISTRATION / LOGIN MODAL ===== -->
     <!-- ============================================ -->
 
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
             <button class="modal-close" id="closeModalBtn">&times;</button>
 
+            <!-- ===== REGISTRATION FORM ===== -->
             <div class="form-fields" id="formFields">
-                <h2>🚀 Register for Tech Week 2026</h2>
-                <p class="modal-sub">Secure your spot for the biggest tech event of the year!</p>
+                <h2 id="modalTitle">🚀 Register for Tech Week 2026</h2>
+                <p class="modal-sub" id="modalSub">Create your account and secure your spot!</p>
 
                 <form id="registrationForm" novalidate>
-                    <div class="form-group">
-                        <label>Full Name <span class="required">*</span></label>
-                        <input type="text" id="fullName" placeholder="Enter your full name" required />
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Email Address <span class="required">*</span></label>
-                            <input type="email" id="email" placeholder="you@example.com" required />
-                        </div>
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input type="tel" id="phone" placeholder="0912 345 6789" />
-                        </div>
-                    </div>
 
                     <div class="form-group">
-                        <label>School / Organization <span class="required">*</span></label>
-                        <input type="text" id="school" placeholder="St. Timothy University" required />
-                    </div>
-
-                    <div class="form-group">
-                        <label>Which activities are you interested in? <span class="required">*</span></label>
-                        <select id="activities" required>
-                            <option value="">Select an option...</option>
-                            <option value="Tech Exhibits">💻 Tech Exhibits</option>
-                            <option value="Workshops">⚡ Workshops</option>
-                            <option value="Competitions">🏆 Competitions</option>
-                            <option value="Esports">🎮 Esports</option>
-                            <option value="All of the above">🚀 All of the above!</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="submit-btn">✅ REGISTER NOW</button>
-
-                    <p style="color:#556; font-size:13px; margin-top:15px; text-align:center;">
-                        <span class="required">*</span> Required fields
-                    </p>
-                </form>
-            </div>
-
-            <div class="success-message" id="successMessage">
-                <div class="check">✅</div>
-                <h3>Registration Successful!</h3>
-                <p>You are now registered for Tech Week 2026.<br />We'll send you updates to your email.</p>
-                <br />
-                <button class="cta-primary" id="closeSuccessBtn" style="padding:14px 30px; font-size:16px; min-width:auto; width:auto; border:none;">
-                    Close
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- ===== JAVASCRIPT ===== -->
-    <!-- ============================================ -->
-
-    <script>
-        // ==========================================
-        // DATA
-        // ==========================================
-
-        const speakers = [
-            { id: 1, name: 'Dr. Maria Santos', role: 'AI Researcher - Google', avatar: '🧠' },
-            { id: 2, name: 'Eng. James Reyes', role: 'Software Engineer - Microsoft', avatar: '💻' },
-           
+                        <label>Username <span class="required">*</span></label>
+                        <input type="text" id="username" placeholder="Choose a username" required />
+                    </div
